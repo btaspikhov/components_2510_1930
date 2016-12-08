@@ -1,6 +1,12 @@
 (function () {
   'use strict';
 
-  alert('Ready to deploy!');
+  //import
+  let Menu = window.Menu;
+
+
+  new Menu({
+    el: document.querySelector('.menu')
+  });
 
 })();
