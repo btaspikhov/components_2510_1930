@@ -1,0 +1,22 @@
+.menu {
+  background-color: #d84444;
+  color: #fff;
+
+  width: 400px;
+  margin: 0 auto;
+}
+
+  .menu__title {
+    font-size: 17px;
+    font-weight: 700;
+  }
+
+  .menu__list {
+
+  }
+
+    .menu__item {
+      border-bottom: 1px solid #fefefe;
+      margin: 5px 0;
+      cursor: pointer;
+    }
