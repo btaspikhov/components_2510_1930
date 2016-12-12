@@ -1,26 +1,41 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Мой проект с компонентным подходом!</title>
+<head>
+	<title>Курсовой проект learn.javascript.ru</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" type="text/css" href="./libs/pure/pure-min.css">
+	<link rel="stylesheet" type="text/css" href="./components/menu/menu.css">
+	<link rel="stylesheet" type="text/css" href="./components/app/app.css">
+</head>
+<body>
 
-    <link rel="stylesheet" href="./blocks/menu/menu.css">
-  </head>
-  <body>
+<div class="app">
+
+	<div class="js-menu">
+		<div class="menu pure-menu custom-restricted-width">
+			<span class="menu__title pure-menu-heading">
+				Наша классная менюшка
+			</span>
+			<ul class="menu__list pure-menu-list">
+				<li class="pure-menu-item" data-index="0">
+					<a class="pure-menu-link" href="https://mail.ru" data-action="pick">
+						mail.ru
+					</a>
+					<i class="close" data-action="remove"></i>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+</div>
 
 
-    <div class="menu">
-      <div class="menu__title">Наша классная менюшка</div>
-      <div class="menu__list">
-        <div class="menu__item">Первый элемент меню</div>
-        <div class="menu__item">Второй элемент меню</div>
-        <div class="menu__item">Третий элемент меню</div>
-        <div class="menu__item">Четвертый элемент меню</div>
-      </div>
-    </div>
+<!-- Dependencies -->
+<script type="text/javascript" src="./components/menu/menu.js"></script>
 
+<!-- Application -->
+<script type="text/javascript" src="./components/app/app.js"></script>
 
-    <script src="./blocks/menu/menu.js"></script>
-    <script src="./main.js"></script>
-  </body>
+</body>
 </html>
