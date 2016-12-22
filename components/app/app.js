@@ -5,11 +5,12 @@
 	let Menu = window.Menu;
 	let Form = window.Form;
 	let Model = window.Model;
+	let httpService = window.httpService;
 
-	let menuModel = new Model({
-		resource: '/data/menu.json',
-		data: {}
-	});
+	// let menuModel = new Model({
+	// 	resource: 'https://components2510.firebaseio.com/menu',
+	// 	data: {}
+	// });
 
 	let menu = new Menu({
 		el: document.querySelector('.js-menu'),
@@ -19,10 +20,16 @@
 		onRemove () {}
 	});
 
-	menuModel.on('update', data => {
-		menu.setData(data);
+	// menuModel.on('update', data => {
+	// 	menu.setData(data);
+	// 	menu.render();
+	// });
+
+
+	httpService.get('/data/menu.json').then(responseText => {
+		menu.setData(JSON.parse(responseText));
 		menu.render();
-	});
+	})
 
 
 	let form = new Form({
@@ -33,24 +40,19 @@
 		menu.addItem(event.detail);
 	});
 
-	menuModel.fetch();
+	// menuModel.fetch();
 
 
 
-	//TODO: Сделать компоненту для нотификации о версии приложения
-	let xhr = new XMLHttpRequest();
-	xhr.open('GET', '/package.json', true);
+	httpService.get('/package.json').then(responseText => {
+		console.log(`App version: ${JSON.parse(responseText).version}`);
+	}, xhr => {
+		console.error(`App version fetching failed!`);
+	});
+
 	
-	xhr.onreadystatechange = function (event) {
-		if (xhr.readyState !== 4) {
-			return;
-		}
 
-		if (xhr.status === 200) {
-			console.log('App vesrion is: ', JSON.parse(xhr.responseText).version);
-		}
-	}
 
-	xhr.send();
+
 
 })();
