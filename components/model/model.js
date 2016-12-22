@@ -18,6 +18,10 @@
 			return this._data;
 		}
 
+		save () {
+			this._makeRequset('PUT', this.resource);
+		}
+
 		fetch () {
 			this._makeRequset('GET', this.resource);
 		}
@@ -40,6 +44,7 @@
 		_makeRequset (method, resource) {
 			let xhr = new XMLHttpRequest();
 			xhr.open(method, resource, true);
+			// xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
 			xhr.onreadystatechange = () => {
 				if (xhr.readyState !== 4) {
 					return;
@@ -48,12 +53,22 @@
 				if (xhr.status === 200) {
 					let data = JSON.parse(xhr.responseText);
 
-					this.trigger('fetch', xhr);
-					this.setData(data);
+
+
+					if (method === 'GET') {
+						this.trigger('fetch', xhr);
+						this.setData(data);
+					}
+
 				}
 			}
 
-			xhr.send();
+			if (method === 'PUT') {
+				xhr.send(JSON.stringify(this._data));
+			} else {
+				xhr.send();
+			}
+			
 		}
 	}
 

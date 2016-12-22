@@ -14,7 +14,7 @@
 		 * @constructor
 		 * @param  {Object} opts
 		 */
-		constructor ({el, data, onPick}) { // деструктуризация объекта
+		constructor ({el, data = {items: [], title: 'simple menu'}, onPick}) { // деструктуризация объекта
 			this.el = el;
 			this.data = data;
 			this.onPick = onPick;
@@ -24,6 +24,10 @@
 
 		setData (data) {
 			this.data = data;
+		}
+
+		getData () {
+			return this.data;
 		}
 
 		/**

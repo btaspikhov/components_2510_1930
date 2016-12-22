@@ -7,10 +7,10 @@
 	let Model = window.Model;
 	let httpService = window.httpService;
 
-	// let menuModel = new Model({
-	// 	resource: 'https://components2510.firebaseio.com/menu',
-	// 	data: {}
-	// });
+	let menuModel = new Model({
+		resource: 'https://components2510.firebaseio.com/menu/-KZbcV-H6EQRXPvfKhx_.json',
+		data: {}
+	});
 
 	let menu = new Menu({
 		el: document.querySelector('.js-menu'),
@@ -20,16 +20,10 @@
 		onRemove () {}
 	});
 
-	// menuModel.on('update', data => {
-	// 	menu.setData(data);
-	// 	menu.render();
-	// });
-
-
-	httpService.get('/data/menu.json').then(responseText => {
-		menu.setData(JSON.parse(responseText));
+	menuModel.on('update', data => {
+		menu.setData(data);
 		menu.render();
-	})
+	});
 
 
 	let form = new Form({
@@ -37,10 +31,13 @@
 	});
 
 	form.on('add', event => {
-		menu.addItem(event.detail);
+		menu.addItem(event.detail); // обновляю интерфейс
+
+		menuModel.setData(menu.getData()); // обновляю данные в моделе
+		menuModel.save(); // сохраняю изменения на сервере
 	});
 
-	// menuModel.fetch();
+	menuModel.fetch();
 
 
 
