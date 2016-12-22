@@ -1,6 +1,3 @@
-(function () {
-	'use strict';
-
 
 	/**
 	 * @class Form
@@ -107,7 +104,4 @@
 
 	}
 
-
-	//export
-	window.Form = Form;
-})();
+	export {Form};

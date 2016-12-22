@@ -1,5 +1,4 @@
-(function() {
-	'use strict';
+
 
 	//import
 	let _template = window.fest['menu/menu.tmpl'];
@@ -105,6 +104,4 @@
 	}
 
 	// Export
-	window.Menu = Menu;
-
-})(window);
+	export {Menu}

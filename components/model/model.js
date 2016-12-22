@@ -1,5 +1,4 @@
-(function () {
-	'use strict';
+
 
 	class Model {
 		constructor({resource, data = {}}) {
@@ -74,6 +73,4 @@
 
 
 	//export
-	window.Model = Model;
-
-})();
+	export {Model};
